@@ -6,10 +6,15 @@ class App extends React.Component {
       videos: window.exampleVideoData,
       currentVideo: window.exampleVideoData[0],
     };
-
-    props.searchYouTube(window.options, this.changeVideoList.bind(this));
+    
   }
 
+  componentWillMount() {
+    
+    this.props.searchYouTube(window.options, this.changeVideoList.bind(this));
+    
+  }
+  
   changeVideo(selectedVideo) {
     this.setState({currentVideo: selectedVideo});
   }

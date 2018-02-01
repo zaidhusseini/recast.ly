@@ -69,8 +69,8 @@ describe('searchYouTube', function() {
   it('should GET videos with the same shape as `exampleVideoData`', function(done) {
     var options = {
       key: window.YOUTUBE_API_KEY,
-      query: 'react',
-      max: 5
+      q: 'react',
+      maxResults: 5
     };
 
     // We want this test to make a real AJAX request
