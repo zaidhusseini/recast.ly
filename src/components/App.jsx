@@ -11,7 +11,7 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    
+    this.setState({autoplay: 0});
     this.props.searchYouTube(window.options, this.changeVideoList.bind(this));
     
   }

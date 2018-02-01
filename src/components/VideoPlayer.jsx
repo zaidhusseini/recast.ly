@@ -1,15 +1,16 @@
 var VideoPlayer = (prop) => (
   <div className="video-player">
     <div className="embed-responsive embed-responsive-16by9">
-      <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + prop.video.id.videoId + '?autoplay=' + prop.autoplay} allowFullScreen></iframe>
+      <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + prop.video.id.videoId + '?autoplay=' + (prop.autoplay || 0)} allowFullScreen></iframe>
     </div>
+    <div id='autoplay'>Autoplay</div>
     <div id='switch'>
       <label id="switch">
-        <input type='checkbox' onClick={()=>prop.cb()} />
+        <input id='hideme' type='checkbox' onClick={()=>prop.cb()} />
         <span id="slider"></span>
-        <div id='autoplay'>Autoplay</div>
       </label>
     </div>
+    
     <div className="video-player-details">
       <h3>{prop.video.snippet.title}</h3>
       <div>{prop.video.snippet.description}</div>
