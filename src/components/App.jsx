@@ -1,17 +1,22 @@
 class App extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       videos: window.exampleVideoData,
-      currentVideo: window.exampleVideoData[0]
+      currentVideo: window.exampleVideoData[0],
     };
+
+    props.searchYouTube(window.options, this.changeVideoList.bind(this));
   }
 
-  changeVideo(e){
-    this.setState({currentVideo: e});
+  changeVideo(selectedVideo) {
+    this.setState({currentVideo: selectedVideo});
   }
 
-
+  changeVideoList(data) {
+    this.setState({videos: data, currentVideo: data[0]});
+  }
 
   render() {
 
@@ -19,7 +24,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><window.Search /></div>
+            <div><window.Search cb={this.changeVideoList.bind(this)}/></div>
           </div>
         </nav>
         <div className="row">
@@ -37,10 +42,6 @@ class App extends React.Component {
   }
 
 }
-
-
- 
-
 
 // In the ES6 spec, files are "modules" and do not share a top-level scope
 // `var` declarations will only exist globally where explicitly defined
