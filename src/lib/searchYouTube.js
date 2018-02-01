@@ -12,7 +12,7 @@ var searchYouTube = (options, callback) => {  //THIS callback is the bound callb
     data: options,
     success: function(data) {
       //pass the data into that callback to do work on the APP
-      console.dir('here is the data', data);  //<--object that has the array somewhere in it
+      console.log('here is the data', data);  //<--object that has the array somewhere in it
       callback(data.items); 
       return (data.items); 
     },
@@ -27,4 +27,5 @@ var searchYouTube = (options, callback) => {  //THIS callback is the bound callb
 };
 
 window.searchYouTube = searchYouTube;
+window.debouncedSearchYouTube = _.debounce(searchYouTube,500);
 

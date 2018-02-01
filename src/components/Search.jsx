@@ -6,13 +6,13 @@ var Search = (props) => (
     <input className="form-control" type="text" onKeyUp={ (event)=>{
       if(event.keyCode === 13 || $('input').val().length > 4){
         window.options.q = $('input').val();
-        window.searchYouTube(window.options, props.cb);
+        window.debouncedSearchYouTube(window.options, props.cb);
       }
 
     }}/>  
     <button className="btn hidden-sm-down" onClick={ ()=>{
       window.options.q = $('input').val();
-      window.searchYouTube(window.options, props.cb);
+      window.debouncedSearchYouTube(window.options, props.cb);
     } }>
       <span className="glyphicon glyphicon-search"></span>
     </button>

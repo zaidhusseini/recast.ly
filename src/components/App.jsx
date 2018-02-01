@@ -5,6 +5,7 @@ class App extends React.Component {
     this.state = {
       videos: window.exampleVideoData,
       currentVideo: window.exampleVideoData[0],
+      autoplay: 0
     };
     
   }
@@ -23,6 +24,11 @@ class App extends React.Component {
     this.setState({videos: data, currentVideo: data[0]});
   }
 
+  autoPlayChange() {
+    this.setState({autoplay: +!this.state.autoplay});
+
+  }
+
   render() {
 
     return (
@@ -34,7 +40,7 @@ class App extends React.Component {
         </nav>
         <div className="row">
           <div className="col-md-7">
-            <div><window.VideoPlayer video={this.state.currentVideo} /></div>
+            <div><window.VideoPlayer video={this.state.currentVideo} autoplay={this.state.autoplay} cb={()=>{this.autoPlayChange();}}/></div>
           </div>
           <div className="col-md-5">
             <div><window.VideoList videos={this.state.videos} cb={this.changeVideo.bind(this)} /></div>
