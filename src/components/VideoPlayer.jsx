@@ -4,9 +4,10 @@ var VideoPlayer = (prop) => (
       <iframe className="embed-responsive-item" src={'https://www.youtube.com/embed/' + prop.video.id.videoId + '?autoplay=' + prop.autoplay} allowFullScreen></iframe>
     </div>
     <div id='switch'>
-      <label id="switch"> Autoplay
-        <input id='slideme' type="checkbox" onClick={()=>prop.cb()} />
-        <span id="slider round"></span>
+      <label id="switch">
+        <input type='checkbox' onClick={()=>prop.cb()} />
+        <span id="slider"></span>
+        <div id='autoplay'>Autoplay</div>
       </label>
     </div>
     <div className="video-player-details">
