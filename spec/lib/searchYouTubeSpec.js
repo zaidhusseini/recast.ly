@@ -70,12 +70,16 @@ describe('searchYouTube', function() {
     var options = {
       key: window.YOUTUBE_API_KEY,
       q: 'react',
-      maxResults: 5
+      maxResults: 5,
+      type: 'video',
+      privacyStatus : 'public',
+      license : 'youtube',
+      videoEmbeddable: true,
+      part: 'snippet'
     };
 
     // We want this test to make a real AJAX request
     xhr.restore();
-
     searchYouTube(options, (data) => {
       expect(hasSameShape(data, window.exampleVideoData)).to.be.true;
       done();

@@ -3,9 +3,14 @@
 
 var Search = (props) => (
   <div className="search-bar form-inline">
-    <input className="form-control" type="text" />  
+    <input className="form-control" type="text" onKeyUp={ (event)=>{
+      if(event.keyCode === 13 || $('input').val().length > 4){
+        window.options.q = $('input').val();
+        window.searchYouTube(window.options, props.cb);
+      }
+
+    }}/>  
     <button className="btn hidden-sm-down" onClick={ ()=>{
-      console.log($('input').val());
       window.options.q = $('input').val();
       window.searchYouTube(window.options, props.cb);
     } }>
