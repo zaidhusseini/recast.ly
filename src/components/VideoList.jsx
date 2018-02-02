@@ -1,7 +1,11 @@
 var VideoList = (props) => (
+  
   <div className="video-list">
     {props.videos.map(video => <VideoListEntry video={video}  cb={props.cb}/>)}
+    <button class="backward" onClick={ ()=>{props.pageChange(-1);}}  id={ (()=>{ if (props.currentPage === 0) {return 'hideme';} })() }>Backwards</button>
+    <button class="forward" onClick={()=>{props.pageChange(1);}} id={ (()=>{ if (props.currentPage === 20) {return 'hideme';} })() } >Forwards</button>
   </div>
+ 
 );
 
 // PropTypes tell other developers what `props` a component expects

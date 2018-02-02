@@ -24,7 +24,7 @@ var Search = (props) => (
 window.Search = Search;
 
 window.options = {
-  'maxResults': 5,
+  'maxResults': 25,
   'key': window.YOUTUBE_API_KEY,
   'part': 'snippet',
   'q': "Funny Cat Videos",

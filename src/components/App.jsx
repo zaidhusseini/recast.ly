@@ -5,7 +5,8 @@ class App extends React.Component {
     this.state = {
       videos: window.exampleVideoData,
       currentVideo: window.exampleVideoData[0],
-      autoplay: 0
+      autoplay: 0,
+      currentPage: 0
     };
     
   }
@@ -26,7 +27,13 @@ class App extends React.Component {
 
   autoPlayChange() {
     this.setState({autoplay: +!this.state.autoplay});
+  }
 
+  
+  changePage(direction) {
+    
+    var page = Math.max(0,this.state.currentPage + 5 * direction);
+    this.setState({currentPage: page});
   }
 
   render() {
@@ -43,7 +50,12 @@ class App extends React.Component {
             <div><window.VideoPlayer video={this.state.currentVideo} autoplay={this.state.autoplay} cb={()=>{this.autoPlayChange();}}/></div>
           </div>
           <div className="col-md-5">
-            <div><window.VideoList videos={this.state.videos} cb={this.changeVideo.bind(this)} /></div>
+            <div><window.VideoList 
+              videos={this.state.videos.slice(this.state.currentPage,this.state.currentPage+5)} 
+              cb={this.changeVideo.bind(this)} 
+              pageChange={this.changePage.bind(this)}
+              currentPage={this.state.currentPage} 
+            /></div>
           </div>
         </div>
       </div>
